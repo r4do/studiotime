@@ -10,10 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_14_092758) do
+ActiveRecord::Schema.define(version: 2019_02_14_093253) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "studios", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "name", default: "", null: false
+    t.text "details", default: "", null: false
+    t.text "minimum_booking", default: "", null: false
+    t.text "hours", default: "", null: false
+    t.text "past_clients"
+    t.text "audio_samples"
+    t.text "amenities"
+    t.text "equipment"
+    t.text "rules"
+    t.string "location", default: "", null: false
+    t.text "venue"
+    t.float "price", default: 0.0, null: false
+    t.boolean "engineer_included", default: false, null: false
+    t.string "images"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["location"], name: "index_studios_on_location"
+    t.index ["name"], name: "index_studios_on_name"
+    t.index ["user_id"], name: "index_studios_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -36,4 +59,5 @@ ActiveRecord::Schema.define(version: 2019_02_14_092758) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "studios", "users"
 end
