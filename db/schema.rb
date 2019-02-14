@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_14_101646) do
+ActiveRecord::Schema.define(version: 2019_02_14_103507) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,12 @@ ActiveRecord::Schema.define(version: 2019_02_14_101646) do
     t.string "instagram_handle"
     t.string "straming_platform_url"
     t.string "image"
+    t.string "country"
+    t.string "street"
+    t.string "city"
+    t.string "postal_code"
+    t.string "iban"
+    t.date "birth_date"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
